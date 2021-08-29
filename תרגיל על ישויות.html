@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <span>
+        first name: <input type="text" id="fname"> 
+        last name: <input type="text" id="lname">
+        </span> </br>
+        <span>
+        address: <select name="" id="city">
+            <option value="תל אביב">
+                תל אביב
+            </option>
+            <option value="כפר סבא">
+                כפר סבא
+            </option>
+            <option value="רעננה">
+                רעננה
+            </option>
+            <option value="אילת">
+                אילת
+            </option>
+            <option value="חיפה">
+                חיפה
+            </option>
+             </select> 
+             <input type="text" id="street" placeholder="street..">
+             <input type="text" id="zipcode" placeholder="zipcode..."></br>
+        </span>
+        <span>
+            <select name="" id="item" onchange="itemSelected()">
+                <option value="phone">
+                    phone
+                </option>
+                <option value="PC">
+                    PC
+                </option>
+                <option value="console">
+                    console
+                </option>
+            </select>
+            <input type="text" id="itemPrice" placeholder="price for item...">
+            <input type="text" id="amount" placeholder="כמות" onchange="showTotalPrice()">
+        סה"כ: <input type="text" id="total" placeholder="מחיר סופי">
+        </span>
+        <div> 
+            <button id="submit" onclick="showConsole()">אישור הזמנה</button>
+            <input type="button" value="reset"> 
+        </div>
+    </div>
+    
+
+    <script>
+    
+    function showConsole() {
+
+        let object1 = {
+            firstName: document.getElementById('fname').value,
+            lastName: document.getElementById('lname').value,
+            city: document.getElementById('city').value,
+            street: document.getElementById('street').value,
+            zipcode: document.getElementById('zipcode').value,
+            item: document.getElementById('item').value,
+            amount: document.getElementById('amount').value,
+            itemPrice: document.getElementById('itemPrice').value,
+            totalPrice: document.getElementById('total').value,
+        }
+        console.log(object1)
+    }
+    
+
+
+    function itemSelected() {
+
+        let itemPrice = 0;
+
+        if (document.getElementById('item').value === "phone") {
+            itemPrice = 15.90
+        }
+        else if (document.getElementById('item').value === "PC") {
+            itemPrice = 20.90
+        } 
+        else if (document.getElementById('item').value === "console") {
+            itemPrice = 100.90
+        }     
+        document.getElementById('itemPrice').value = itemPrice
+    }
+    function showTotalPrice() {
+        let itemPrice = document.getElementById('itemPrice').value
+        let amount = document.getElementById('amount').value
+        let totalprice = document.getElementById('total').value = itemPrice * amount
+
+        document.getElementById('total').value = totalprice
+    }
+    </script>
+</body>
+</html>
